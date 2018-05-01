@@ -14,6 +14,17 @@ class MyApp extends StatelessWidget {
     );
   }
 
+  AppBar buildAppBar() {
+    return new AppBar(
+      backgroundColor: Colors.orange,
+      title: new Text('CrowdFounder'),
+      leading: new IconButton(
+        icon: new Icon(Icons.menu),
+        onPressed: null,
+      ),
+    );
+  }
+
   Widget mainContent() {
     return new Stack(
       children: <Widget>[
@@ -33,31 +44,7 @@ class MyApp extends StatelessWidget {
             backThisProject(),
           ],
         ),
-        new Container(
-            child: new Padding(
-                padding: const EdgeInsets.fromLTRB(0.0, 120.0, 35.0, 0.0),
-                child: new Align(
-                    alignment: Alignment.bottomRight,
-                    child: new Column(
-                      children: <Widget>[
-                        new Container(
-                          decoration: new BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: new Border.all(
-                                  color: Colors.white, width: 8.0),
-                              image: new DecorationImage(
-                                  image:
-                                      new AssetImage('images/img_face.jpg'))),
-                          width: 110.0,
-                          height: 110.0,
-                        ),
-                        new Text(
-                          "Albert M",
-                          style: new TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18.0),
-                        )
-                      ],
-                    )))),
+        overlapImageWithText(),
       ],
     );
   }
@@ -81,18 +68,20 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ],
-        ));
+        )
+    );
   }
 
-  Widget readMore() {
+
+  Widget titleArticle() {
     return new Container(
         padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 16.0),
         child: new Text(
-          "READ MORE",
+          "Sustentabilty S/A: A mobile game about managing green business",
           style: new TextStyle(
-            color: Colors.orange,
+            color: Colors.black,
             fontWeight: FontWeight.bold,
-            fontSize: 16.0,
+            fontSize: 24.0,
           ),
         ));
   }
@@ -110,28 +99,17 @@ class MyApp extends StatelessWidget {
         ));
   }
 
-  Widget titleArticle() {
+  Widget readMore() {
     return new Container(
         padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 16.0),
         child: new Text(
-          "Sustentabilty S/A: A mobile game about managing green business",
+          "READ MORE",
           style: new TextStyle(
-            color: Colors.black,
+            color: Colors.orange,
             fontWeight: FontWeight.bold,
-            fontSize: 24.0,
+            fontSize: 16.0,
           ),
         ));
-  }
-
-  AppBar buildAppBar() {
-    return new AppBar(
-      backgroundColor: Colors.orange,
-      title: new Text('CrowdFounder'),
-      leading: new IconButton(
-        icon: new Icon(Icons.menu),
-        onPressed: null,
-      ),
-    );
   }
 
   Widget sliderObjective() {
@@ -173,14 +151,16 @@ class MyApp extends StatelessWidget {
                 const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
             child: new Row(
               children: <Widget>[
-                firstBoldSecondSmall("\$75.000", "of \$100.000 goal"),
-                firstBoldSecondSmall("300", "bakers"),
-                firstBoldSecondSmall("30", "days to go"),
+                textFirstBoldSecondSmall("\$75.000", "of \$100.000 goal"),
+                textFirstBoldSecondSmall("300", "bakers"),
+                textFirstBoldSecondSmall("30", "days to go"),
               ],
-            )));
+            )
+        )
+    );
   }
 
-  Widget firstBoldSecondSmall(String first, String second) {
+  Widget textFirstBoldSecondSmall(String first, String second) {
     return new Expanded(
         child: new Column(
       children: <Widget>[
@@ -223,6 +203,40 @@ class MyApp extends StatelessWidget {
                   style: new TextStyle(color: Colors.white, fontSize: 18.0),
                 ),
               ),
-            ))));
+            ),),
+        ),
+    );
   }
+
+  Widget overlapImageWithText() {
+    return new Container(
+        child: new Padding(
+            padding: const EdgeInsets.fromLTRB(0.0, 120.0, 35.0, 0.0),
+            child: new Align(
+                alignment: Alignment.bottomRight,
+                child: new Column(
+                  children: <Widget>[
+                    new Container(
+                      decoration: new BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: new Border.all(
+                              color: Colors.white, width: 8.0),
+                          image: new DecorationImage(
+                              image:
+                              new AssetImage('images/img_face.jpg'))),
+                      width: 110.0,
+                      height: 110.0,
+                    ),
+                    new Text(
+                      "Albert M",
+                      style: new TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 18.0),
+                    )
+                  ],
+                )
+            )
+        )
+    );
+  }
+  
 }
